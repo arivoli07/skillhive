@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: linear-gradient(180deg, #f0f7ff 0%, #e3efff 55%, #dbeafe 100%);
+  color: #2f2f2f;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.glass-card {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.gradient-ring {
+  background: linear-gradient(135deg, rgba(30, 107, 214, 0.18), rgba(23, 184, 151, 0.18));
+}
