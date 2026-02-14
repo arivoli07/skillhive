@@ -2,6 +2,17 @@
 
 Skillhive is a simplified freelancer–client marketplace built with React, Spring Boot, JWT authentication, and MySQL.
 
+## Frontend-Only Demo Mode (Portfolio)
+
+The frontend now runs with a built-in mock API and localStorage data, so visitors can use all pages without deploying backend or database.
+
+- No backend is required for demo deployment.
+- Data is stored in browser localStorage.
+- Routes like client/freelancer dashboards are publicly accessible for demo viewing.
+- Optional demo login:
+  - Client: `client@demo.com` / `demo123`
+  - Freelancer: `freelancer@demo.com` / `demo123`
+
 ## Structure
 
 - `backend`: Spring Boot REST API

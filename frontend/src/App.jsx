@@ -14,8 +14,8 @@ import { useAuth } from "./context/AuthContext.jsx";
 
 const RequireAuth = ({ children, role }) => {
   const { auth } = useAuth();
-  if (!auth) return <Navigate to="/login" replace />;
-  if (role && auth.role !== role) return <Navigate to="/" replace />;
+  if (!auth) return children;
+  if (role && auth.role !== role) return children;
   return children;
 };
 

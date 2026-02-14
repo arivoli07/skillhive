@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import api from "../services/api.js";
 import FormField, { SelectField, TextAreaField } from "../components/FormField.jsx";
 import Loading from "../components/Loading.jsx";
-import { useAuth } from "../context/AuthContext.jsx";
 
 const ClientProjects = () => {
-  const { auth } = useAuth();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
@@ -28,25 +26,16 @@ const ClientProjects = () => {
   const loadData = async () => {
     setLoading(true);
     try {
-      if (auth?.token) {
-        const [projectsRes, profileRes] = await Promise.all([
-          api.get("/clients/me/projects"),
-          api.get("/clients/me")
-        ]);
-        setProjects(projectsRes.data);
-        setClientProfile({
-          fullName: profileRes.data.fullName || "",
-          company: profileRes.data.company || "",
-          profilePhotoUrl: profileRes.data.profilePhotoUrl || ""
-        });
-      } else {
-        setProjects([]);
-        setClientProfile({
-          fullName: "",
-          company: "",
-          profilePhotoUrl: ""
-        });
-      }
+      const [projectsRes, profileRes] = await Promise.all([
+        api.get("/clients/me/projects"),
+        api.get("/clients/me")
+      ]);
+      setProjects(projectsRes.data);
+      setClientProfile({
+        fullName: profileRes.data.fullName || "",
+        company: profileRes.data.company || "",
+        profilePhotoUrl: profileRes.data.profilePhotoUrl || ""
+      });
     } catch (err) {
       console.error(err);
     } finally {
